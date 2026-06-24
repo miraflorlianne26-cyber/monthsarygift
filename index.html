@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎂 Special Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════ UNLOCK SCREEN ═══════════ -->
+  <div id="unlock-screen" class="screen active">
+    <div class="unlock-bg"></div>
+    <div class="unlock-card">
+      <div class="lock-icon">🔒</div>
+      <h1>🎂 Special Surprise 🎂</h1>
+      <p class="unlock-sub">Enter your birthdate to unlock your gift!</p>
+      <label for="birthdate-input">Your Birthdate</label>
+      <input type="date" id="birthdate-input" />
+      <p id="unlock-error" class="error-msg hidden">That's not the right date… try again! 💕</p>
+      <button id="unlock-btn" class="btn btn-primary">Unlock My Gift</button>
+      <p class="unlock-footer">✨ ❤️ ✨</p>
+      <p class="created-by">Created with ❤️ by <span id="creator-name"></span></p>
+    </div>
+  </div>
+
+  <!-- ═══════════ MAIN GIFT SITE ═══════════ -->
+  <div id="main-site" class="screen hidden">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 id="hero-title"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <p class="hero-msg" id="hero-msg"></p>
+      <p class="hero-emojis">✨ ❤️ ✨</p>
+      <div class="cake-card">
+        <div class="cake" id="birthday-cake">
+          <div class="cake-layer cake-top">
+            <div class="candle" data-candle="0"><div class="flame"></div></div>
+            <div class="candle" data-candle="1"><div class="flame"></div></div>
+            <div class="candle" data-candle="2"><div class="flame"></div></div>
+          </div>
+          <div class="cake-layer cake-bottom"></div>
+        </div>
+        <h2 class="wish-text">Make a Wish! ✨</h2>
+        <p class="wish-sub">Blow out the candles and make this year magical!</p>
+        <button id="blow-btn" class="btn btn-pink">🎂 Blow the Candle</button>
+      </div>
+    </section>
+
+    <!-- Forever & Always + Counter -->
+    <section class="section counter-section">
+      <div class="forever-card">
+        <span class="flower-icon">🌷</span>
+        <h2>Forever and Always</h2>
+        <p>Today is your special day, but every day is special because you're in my life. Happy Birthday to my everything! 💖</p>
+      </div>
+      <h2 class="counter-title">Time Since You Said "YES"</h2>
+      <p class="counter-sub">Since the day you became my girlfriend...</p>
+      <div class="timer-grid">
+        <div class="timer-card"><span id="days" class="timer-num">0</span><span class="timer-label">DAYS</span></div>
+        <div class="timer-card"><span id="hours" class="timer-num">0</span><span class="timer-label">HOURS</span></div>
+        <div class="timer-card"><span id="minutes" class="timer-num">0</span><span class="timer-label">MINUTES</span></div>
+        <div class="timer-card"><span id="seconds" class="timer-num">0</span><span class="timer-label">SECONDS</span></div>
+      </div>
+      <p class="timer-footer">Every second with you has been a blessing! ❤️</p>
+    </section>
+
+    <!-- Open My Heart -->
+    <section class="section heart-section">
+      <div class="banner-photos" id="banner-photos"></div>
+      <button class="open-heart-btn" id="open-heart-btn">💚 Open My Heart</button>
+      <div class="heart-card hidden" id="heart-card">
+        <div class="big-heart">❤️</div>
+        <p>Click to open my love letter</p>
+      </div>
+    </section>
+
+    <!-- Love Letter Trigger -->
+    <section class="section letter-trigger-section">
+      <div class="letter-trigger" id="letter-trigger">
+        <span class="heart-small">💕</span>
+        <p>Click to open my love letter</p>
+      </div>
+      <div class="letter-reveal hidden" id="letter-reveal">
+        <span class="heart-big">❤️</span>
+        <h2 id="letter-title"></h2>
+        <p id="letter-message"></p>
+      </div>
+    </section>
+
+    <!-- Reasons Why I Love You -->
+    <section class="section reasons-section">
+      <h2>💚 Reasons Why I Love You</h2>
+      <div class="reasons-grid" id="reasons-grid"></div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="section gallery-section">
+      <h2>📁 Our Precious Memories</h2>
+      <div class="photo-grid" id="photo-grid"></div>
+    </section>
+
+    <!-- Our Love Story -->
+    <section class="section story-section">
+      <h2>Our Love Story</h2>
+      <div class="story-card">
+        <button class="story-open-btn" id="story-open-btn">📖 Read My Letter</button>
+        <div class="story-letter hidden" id="story-letter">
+          <h3 id="full-letter-title"></h3>
+          <div id="full-letter-body" class="letter-body"></div>
+          <button class="btn btn-pink" id="close-letter-btn">Close &amp; Open Again</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Made with ❤️ by <span id="footer-name"></span></p>
+    </footer>
+  </div>
+
+  <!-- Loved Modal -->
+  <div class="modal-overlay hidden" id="loved-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-heart">❤️✨</div>
+      <h2 id="modal-title"></h2>
+      <p id="modal-message"></p>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
