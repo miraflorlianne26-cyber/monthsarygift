@@ -16,14 +16,14 @@
     <div class="unlock-bg"></div>
     <div class="unlock-card">
       <div class="lock-icon">🔒</div>
-      <h1>🎂 Special Surprise 🎂</h1>
-      <p class="unlock-sub">Enter your birthdate to unlock your gift!</p>
-      <label for="birthdate-input">Your Birthdate</label>
-      <input type="date" id="birthdate-input" />
+      <h1>Special Surprise for my Boyfriend</h1>
+      <p class="unlock-sub">Enter a Date to Unlock this!</p>
+      <p class="password-hint">The password is a date that means a lot to us—one we'll never forget. ❤️</p>
+      <input type="text" id="birthdate-input" placeholder="MM/DD/YYYY" inputmode="numeric" maxlength="10" autocomplete="off" />
       <p id="unlock-error" class="error-msg hidden">That's not the right date… try again! 💕</p>
       <button id="unlock-btn" class="btn btn-primary">Unlock My Gift</button>
       <p class="unlock-footer">✨ ❤️ ✨</p>
-      <p class="created-by">Created with ❤️ by <span id="creator-name"></span></p>
+      <p class="created-by" id="creator-signature"></p>
     </div>
   </div>
 
@@ -35,61 +35,41 @@
       <h1 id="hero-title"></h1>
       <p class="hero-sub" id="hero-sub"></p>
       <p class="hero-msg" id="hero-msg"></p>
-      <p class="hero-emojis">✨ ❤️ ✨</p>
-      <div class="cake-card">
-        <div class="cake" id="birthday-cake">
-          <div class="cake-layer cake-top">
-            <div class="candle" data-candle="0"><div class="flame"></div></div>
-            <div class="candle" data-candle="1"><div class="flame"></div></div>
-            <div class="candle" data-candle="2"><div class="flame"></div></div>
-          </div>
-          <div class="cake-layer cake-bottom"></div>
+      <p class="hero-emojis">🌸 ❤️ 🌸</p>
+      <div class="flower-card">
+        <div class="bouquet" id="flower-bouquet">
+          <span class="bloom-flower">🌹</span>
+          <span class="bloom-flower">🌷</span>
+          <span class="bloom-flower">🌸</span>
+          <span class="bloom-flower">🌺</span>
+          <span class="bloom-flower">💐</span>
         </div>
-        <h2 class="wish-text">Make a Wish! ✨</h2>
-        <p class="wish-sub">Blow out the candles and make this year magical!</p>
-        <button id="blow-btn" class="btn btn-pink">🎂 Blow the Candle</button>
+        <h2 class="wish-text" id="flower-title"></h2>
+        <p class="wish-sub" id="flower-sub"></p>
+        <button id="flower-btn" class="btn btn-dark"></button>
       </div>
     </section>
 
-    <!-- Forever & Always + Counter -->
+    <!-- Forever & Monthsary -->
     <section class="section counter-section">
       <div class="forever-card">
         <span class="flower-icon">🌷</span>
-        <h2>Forever and Always</h2>
-        <p>Today is your special day, but every day is special because you're in my life. Happy Birthday to my everything! 💖</p>
+        <h2 id="forever-title"></h2>
+        <p id="forever-message"></p>
       </div>
-      <h2 class="counter-title">Time Since You Said "YES"</h2>
-      <p class="counter-sub">Since the day you became my girlfriend...</p>
-      <div class="timer-grid">
+      <h2 class="monthsary-title" id="monthsary-title"></h2>
+      <p class="monthsary-sub" id="monthsary-sub"></p>
+      <div class="timer-grid monthsary-grid">
+        <div class="timer-card"><span id="months" class="timer-num">0</span><span class="timer-label">MONTHS</span></div>
+        <div class="timer-card"><span id="weeks" class="timer-num">0</span><span class="timer-label">WEEKS</span></div>
         <div class="timer-card"><span id="days" class="timer-num">0</span><span class="timer-label">DAYS</span></div>
-        <div class="timer-card"><span id="hours" class="timer-num">0</span><span class="timer-label">HOURS</span></div>
-        <div class="timer-card"><span id="minutes" class="timer-num">0</span><span class="timer-label">MINUTES</span></div>
-        <div class="timer-card"><span id="seconds" class="timer-num">0</span><span class="timer-label">SECONDS</span></div>
       </div>
-      <p class="timer-footer">Every second with you has been a blessing! ❤️</p>
+      <p class="timer-footer" id="monthsary-footer"></p>
     </section>
 
-    <!-- Open My Heart -->
+    <!-- Banner Photos -->
     <section class="section heart-section">
       <div class="banner-photos" id="banner-photos"></div>
-      <button class="open-heart-btn" id="open-heart-btn">💚 Open My Heart</button>
-      <div class="heart-card hidden" id="heart-card">
-        <div class="big-heart">❤️</div>
-        <p>Click to open my love letter</p>
-      </div>
-    </section>
-
-    <!-- Love Letter Trigger -->
-    <section class="section letter-trigger-section">
-      <div class="letter-trigger" id="letter-trigger">
-        <span class="heart-small">💕</span>
-        <p>Click to open my love letter</p>
-      </div>
-      <div class="letter-reveal hidden" id="letter-reveal">
-        <span class="heart-big">❤️</span>
-        <h2 id="letter-title"></h2>
-        <p id="letter-message"></p>
-      </div>
     </section>
 
     <!-- Reasons Why I Love You -->
@@ -118,15 +98,20 @@
     </section>
 
     <footer class="site-footer">
-      <p>Made with ❤️ by <span id="footer-name"></span></p>
+      <p id="footer-signature"></p>
     </footer>
   </div>
 
   <!-- Loved Modal -->
   <div class="modal-overlay hidden" id="loved-modal">
     <div class="modal-card">
+      <span class="modal-tulip tulip-1">🌷</span>
+      <span class="modal-tulip tulip-2">🌷</span>
+      <span class="modal-tulip tulip-3">🌷</span>
+      <span class="modal-tulip tulip-4">🌷</span>
+      <span class="modal-tulip tulip-5">🌷</span>
+      <span class="modal-tulip tulip-6">🌷</span>
       <button class="modal-close" id="modal-close">✕</button>
-      <div class="modal-heart">❤️✨</div>
       <h2 id="modal-title"></h2>
       <p id="modal-message"></p>
     </div>

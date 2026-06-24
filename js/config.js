@@ -2,17 +2,28 @@
 const CONFIG = {
   // Unlock screen
   herName: "Love",
-  yourName: "Your Name",
-  birthdate: "2000-01-01", // YYYY-MM-DD — must match to unlock the gift
+  yourName: "Lianne",
+  signature: "Truly yours, Your pretty Gf Lianne",
+  unlockDate: "01/24/2025", // MM/DD/YYYY — only this date unlocks the gift
 
-  // Relationship counter ("Time Since You Said YES")
-  relationshipStart: "2024-08-25", // YYYY-MM-DD
+  // Forever & monthsary section
+  foreverTitle: "Forever and Always",
+  foreverMessage:
+    "Another month, another reason to be grateful for you. Thank you for filling my days with love, laughter, and happiness. Happy Monthsary, my love!",
+  monthsaryTitle: "Our Monthsary Journey 🌷",
+  monthsarySub: "Celebrating every month we've shared together",
+  monthsaryFooter: "Here's to many more monthsaries together! 🌷",
 
-  // Header messages
-  birthdayTitle: "Happy Birthday Love!",
-  birthdaySubtitle: "To My Beautiful Girlfriend",
-  birthdayMessage:
-    "On this special day, I celebrate you and all the beautiful moments we share together.",
+  relationshipStart: "2025-01-24", // YYYY-MM-DD — used for monthsary counter
+
+  // Hero / monthsary messages
+  heroTitle: "Happy 17th Monthsary Lovey!",
+  heroSubtitle: "To my Dearest Handsome Man",
+  heroMessage:
+    "On this special monthsary, I am grateful for you and all the beautiful moments we've shared.",
+  flowerTitle: "Our Love Blooms! 🌸",
+  flowerSub: "Like these flowers, our love keeps growing stronger every month.",
+  flowerButton: "🌸 Bloom for You",
 
   // Love letter content
   loveLetterTitle: "I Love You Forever!",
@@ -20,9 +31,10 @@ const CONFIG = {
     "May your day be as beautiful and wonderful as you are. Thank you for being the love of my life. 🎂💕",
 
   // Modal message
-  lovedModalTitle: "You Are Loved!",
-  lovedModalMessage:
-    "Every single day with you feels like a dream come true. You make my heart skip a beat, my face light up with a smile, and my life infinitely better. Thank you for being YOU! ❤️",
+  lovedModalTitle: "Dear Lovey",
+  lovedModalMessage: `These past 1 year and 5 months with you have been some of the happiest moments of my life. You continue to make my heart skip a beat, bring the brightest smile to my face, and make every day feel a little more special. Thank you for your love, your patience, your care, and for simply being you.
+
+I'm so grateful to have you in my life, and I look forward to making many more beautiful memories together.`,
 
   // Full letter
   fullLetterTitle: "Happy Birthday, My Love!",

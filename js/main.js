@@ -1,22 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
   populateContent();
   setupUnlock();
-  setupCake();
-  setupHeart();
-  setupLetter();
+  setupFlowers();
   setupStory();
   setupModal();
   startCounter();
 });
 
+function getMonthsBetween(start, end) {
+  let months = (end.getFullYear() - start.getFullYear()) * 12;
+  months += end.getMonth() - start.getMonth();
+  if (end.getDate() < start.getDate()) months--;
+  return Math.max(0, months);
+}
+
 function populateContent() {
-  document.getElementById("creator-name").textContent = CONFIG.yourName;
-  document.getElementById("footer-name").textContent = CONFIG.yourName;
-  document.getElementById("hero-title").textContent = CONFIG.birthdayTitle;
-  document.getElementById("hero-sub").textContent = CONFIG.birthdaySubtitle;
-  document.getElementById("hero-msg").textContent = CONFIG.birthdayMessage;
-  document.getElementById("letter-title").textContent = CONFIG.loveLetterTitle;
-  document.getElementById("letter-message").textContent = CONFIG.loveLetterMessage;
+  document.getElementById("creator-signature").textContent = CONFIG.signature;
+  document.getElementById("footer-signature").textContent = CONFIG.signature;
+  document.getElementById("hero-title").textContent = CONFIG.heroTitle;
+  document.getElementById("hero-sub").textContent = CONFIG.heroSubtitle;
+  document.getElementById("hero-msg").textContent = CONFIG.heroMessage;
+  document.getElementById("flower-title").textContent = CONFIG.flowerTitle;
+  document.getElementById("flower-sub").textContent = CONFIG.flowerSub;
+  document.getElementById("flower-btn").textContent = CONFIG.flowerButton;
+  document.getElementById("forever-title").textContent = CONFIG.foreverTitle;
+  document.getElementById("forever-message").textContent = CONFIG.foreverMessage;
+  document.getElementById("monthsary-title").textContent = CONFIG.monthsaryTitle;
+  document.getElementById("monthsary-sub").textContent = CONFIG.monthsarySub;
+  document.getElementById("monthsary-footer").textContent = CONFIG.monthsaryFooter;
   document.getElementById("modal-title").textContent = CONFIG.lovedModalTitle;
   document.getElementById("modal-message").textContent = CONFIG.lovedModalMessage;
   document.getElementById("full-letter-title").textContent = CONFIG.fullLetterTitle;
@@ -53,14 +64,22 @@ function setupUnlock() {
   const input = document.getElementById("birthdate-input");
   const error = document.getElementById("unlock-error");
 
+  input.addEventListener("input", () => {
+    const digits = input.value.replace(/\D/g, "").slice(0, 8);
+    let formatted = digits;
+    if (digits.length > 2) formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+    if (digits.length > 4) formatted = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
+    input.value = formatted;
+  });
+
   function tryUnlock() {
-    if (input.value === CONFIG.birthdate) {
+    if (input.value === CONFIG.unlockDate) {
       document.getElementById("unlock-screen").classList.add("hidden");
       document.getElementById("main-site").classList.remove("hidden");
       error.classList.add("hidden");
     } else {
       error.classList.remove("hidden");
-      input.style.borderColor = "#e91e63";
+      input.style.borderColor = "#1a1a1a";
       setTimeout(() => { input.style.borderColor = ""; }, 2000);
     }
   }
@@ -71,47 +90,22 @@ function setupUnlock() {
   });
 }
 
-function setupCake() {
-  const btn = document.getElementById("blow-btn");
-  const candles = document.querySelectorAll(".candle");
-  let blown = 0;
+function setupFlowers() {
+  const btn = document.getElementById("flower-btn");
+  const flowers = document.querySelectorAll(".bloom-flower");
+  let bloomed = false;
 
   btn.addEventListener("click", () => {
-    if (blown < candles.length) {
-      candles[blown].classList.add("blown");
-      blown++;
-    }
-    if (blown === candles.length) {
-      btn.textContent = "🎉 Wish granted!";
-      btn.disabled = true;
-      setTimeout(() => showModal(), 800);
-    }
-  });
-}
+    if (bloomed) return;
+    bloomed = true;
 
-function setupHeart() {
-  const openBtn = document.getElementById("open-heart-btn");
-  const heartCard = document.getElementById("heart-card");
+    flowers.forEach((flower, i) => {
+      setTimeout(() => flower.classList.add("bloomed"), i * 250);
+    });
 
-  openBtn.addEventListener("click", () => {
-    heartCard.classList.remove("hidden");
-    openBtn.classList.add("hidden");
-    heartCard.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
-
-  heartCard.addEventListener("click", () => {
-    showModal();
-    document.getElementById("letter-trigger").scrollIntoView({ behavior: "smooth" });
-  });
-}
-
-function setupLetter() {
-  const trigger = document.getElementById("letter-trigger");
-  const reveal = document.getElementById("letter-reveal");
-
-  trigger.addEventListener("click", () => {
-    trigger.classList.add("hidden");
-    reveal.classList.remove("hidden");
+    btn.textContent = "🌸 17 months of love!";
+    btn.disabled = true;
+    setTimeout(() => showModal(), 1500);
   });
 }
 
@@ -154,16 +148,14 @@ function startCounter() {
     if (diff < 0) return;
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+    const weeks = Math.floor(days / 7);
+    const months = getMonthsBetween(start, now);
 
+    document.getElementById("months").textContent = months;
+    document.getElementById("weeks").textContent = weeks;
     document.getElementById("days").textContent = days;
-    document.getElementById("hours").textContent = hours;
-    document.getElementById("minutes").textContent = minutes;
-    document.getElementById("seconds").textContent = seconds;
   }
 
   update();
-  setInterval(update, 1000);
+  setInterval(update, 60000);
 }
