@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   startCounter();
 });
 
+let letterRead = false;
+
 function getMonthsBetween(start, end) {
   let months = (end.getFullYear() - start.getFullYear()) * 12;
   months += end.getMonth() - start.getMonth();
@@ -16,12 +18,12 @@ function getMonthsBetween(start, end) {
 
 function populateContent() {
   document.getElementById("creator-signature").textContent = CONFIG.signature;
-  document.getElementById("footer-signature").textContent = CONFIG.signature;
   document.getElementById("hero-title").textContent = CONFIG.heroTitle;
   document.getElementById("hero-sub").textContent = CONFIG.heroSubtitle;
   document.getElementById("hero-msg").textContent = CONFIG.heroMessage;
   document.getElementById("flower-title").textContent = CONFIG.flowerTitle;
   document.getElementById("flower-sub").textContent = CONFIG.flowerSub;
+  document.getElementById("flower-hint").textContent = CONFIG.flowerHint;
   document.getElementById("flower-btn").textContent = CONFIG.flowerButton;
   document.getElementById("forever-title").textContent = CONFIG.foreverTitle;
   document.getElementById("forever-message").textContent = CONFIG.foreverMessage;
@@ -30,16 +32,9 @@ function populateContent() {
   document.getElementById("monthsary-footer").textContent = CONFIG.monthsaryFooter;
   document.getElementById("modal-title").textContent = CONFIG.lovedModalTitle;
   document.getElementById("modal-message").textContent = CONFIG.lovedModalMessage;
+  document.getElementById("story-section-title").textContent = CONFIG.storySectionTitle;
   document.getElementById("full-letter-title").textContent = CONFIG.fullLetterTitle;
   document.getElementById("full-letter-body").textContent = CONFIG.fullLetterBody;
-
-  const bannerEl = document.getElementById("banner-photos");
-  CONFIG.bannerPhotos.forEach((src) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = "Us";
-    bannerEl.appendChild(img);
-  });
 
   const gridEl = document.getElementById("photo-grid");
   CONFIG.photos.forEach(({ src, alt }) => {
@@ -76,7 +71,9 @@ function setupUnlock() {
     if (input.value === CONFIG.unlockDate) {
       document.getElementById("unlock-screen").classList.add("hidden");
       document.getElementById("main-site").classList.remove("hidden");
+      document.body.classList.add("content-locked");
       error.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "instant" });
     } else {
       error.classList.remove("hidden");
       input.style.borderColor = "#1a1a1a";
@@ -92,12 +89,16 @@ function setupUnlock() {
 
 function setupFlowers() {
   const btn = document.getElementById("flower-btn");
+  const hint = document.getElementById("flower-hint");
   const flowers = document.querySelectorAll(".bloom-flower");
   let bloomed = false;
 
   btn.addEventListener("click", () => {
     if (bloomed) return;
     bloomed = true;
+
+    hint.textContent = CONFIG.flowerHintOpening;
+    hint.classList.add("flower-hint-active");
 
     flowers.forEach((flower, i) => {
       setTimeout(() => flower.classList.add("bloomed"), i * 250);
@@ -107,6 +108,26 @@ function setupFlowers() {
     btn.disabled = true;
     setTimeout(() => showModal(), 1500);
   });
+}
+
+function unlockRestOfSite() {
+  if (letterRead) return;
+  letterRead = true;
+
+  document.body.classList.remove("content-locked");
+  const locked = document.getElementById("locked-content");
+  const hero = document.getElementById("hero-section");
+  locked.classList.remove("hidden");
+  hero.classList.remove("content-only");
+
+  setTimeout(() => {
+    locked.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 400);
+}
+
+function closeModalAndContinue() {
+  document.getElementById("loved-modal").classList.add("hidden");
+  unlockRestOfSite();
 }
 
 function setupStory() {
@@ -127,11 +148,12 @@ function setupStory() {
 
 function setupModal() {
   const modal = document.getElementById("loved-modal");
-  document.getElementById("modal-close").addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+
+  document.getElementById("modal-close").addEventListener("click", closeModalAndContinue);
+  document.getElementById("modal-continue-btn").addEventListener("click", closeModalAndContinue);
+
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.classList.add("hidden");
+    if (e.target === modal) closeModalAndContinue();
   });
 }
 

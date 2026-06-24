@@ -13,16 +13,21 @@
 
   <!-- ═══════════ UNLOCK SCREEN ═══════════ -->
   <div id="unlock-screen" class="screen active">
+    <div class="tulip-field unlock-tulips" aria-hidden="true">
+      <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+      <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+      <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+      <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+    </div>
     <div class="unlock-bg"></div>
     <div class="unlock-card">
       <div class="lock-icon">🔒</div>
       <h1>Special Surprise for my Boyfriend</h1>
       <p class="unlock-sub">Enter a Date to Unlock this!</p>
-      <p class="password-hint">The password is a date that means a lot to us—one we'll never forget. ❤️</p>
+      <p class="password-hint">The password is a date that means a lot to us, one we will never forget.</p>
       <input type="text" id="birthdate-input" placeholder="MM/DD/YYYY" inputmode="numeric" maxlength="10" autocomplete="off" />
       <p id="unlock-error" class="error-msg hidden">That's not the right date… try again! 💕</p>
       <button id="unlock-btn" class="btn btn-primary">Unlock My Gift</button>
-      <p class="unlock-footer">✨ ❤️ ✨</p>
       <p class="created-by" id="creator-signature"></p>
     </div>
   </div>
@@ -31,11 +36,16 @@
   <div id="main-site" class="screen hidden">
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero content-only" id="hero-section">
+      <div class="tulip-field" aria-hidden="true">
+        <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+        <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+        <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+        <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+      </div>
       <h1 id="hero-title"></h1>
       <p class="hero-sub" id="hero-sub"></p>
       <p class="hero-msg" id="hero-msg"></p>
-      <p class="hero-emojis">🌸 ❤️ 🌸</p>
       <div class="flower-card">
         <div class="bouquet" id="flower-bouquet">
           <span class="bloom-flower">🌹</span>
@@ -46,12 +56,19 @@
         </div>
         <h2 class="wish-text" id="flower-title"></h2>
         <p class="wish-sub" id="flower-sub"></p>
+        <p class="flower-hint" id="flower-hint"></p>
         <button id="flower-btn" class="btn btn-dark"></button>
       </div>
     </section>
 
-    <!-- Forever & Monthsary -->
+    <div id="locked-content" class="locked-content hidden">
     <section class="section counter-section">
+      <div class="tulip-field" aria-hidden="true">
+        <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+        <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+        <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+        <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+      </div>
       <div class="forever-card">
         <span class="flower-icon">🌷</span>
         <h2 id="forever-title"></h2>
@@ -67,39 +84,53 @@
       <p class="timer-footer" id="monthsary-footer"></p>
     </section>
 
-    <!-- Banner Photos -->
-    <section class="section heart-section">
-      <div class="banner-photos" id="banner-photos"></div>
-    </section>
-
     <!-- Reasons Why I Love You -->
     <section class="section reasons-section">
+      <div class="tulip-field" aria-hidden="true">
+        <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+        <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+        <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+        <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+        <span class="tp tp13">🌷</span><span class="tp tp14">🌷</span><span class="tp tp15">🌷</span>
+        <span class="tp tp16">🌷</span><span class="tp tp17">🌷</span><span class="tp tp18">🌷</span>
+      </div>
       <h2>💚 Reasons Why I Love You</h2>
       <div class="reasons-grid" id="reasons-grid"></div>
     </section>
 
     <!-- Photo Gallery -->
     <section class="section gallery-section">
+      <div class="tulip-field" aria-hidden="true">
+        <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+        <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+        <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+        <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+      </div>
       <h2>📁 Our Precious Memories</h2>
       <div class="photo-grid" id="photo-grid"></div>
     </section>
 
     <!-- Our Love Story -->
     <section class="section story-section">
-      <h2>Our Love Story</h2>
+      <div class="tulip-field" aria-hidden="true">
+        <span class="tp tp1">🌷</span><span class="tp tp2">🌷</span><span class="tp tp3">🌷</span>
+        <span class="tp tp4">🌷</span><span class="tp tp5">🌷</span><span class="tp tp6">🌷</span>
+        <span class="tp tp7">🌷</span><span class="tp tp8">🌷</span><span class="tp tp9">🌷</span>
+        <span class="tp tp10">🌷</span><span class="tp tp11">🌷</span><span class="tp tp12">🌷</span>
+      </div>
+      <h2 id="story-section-title">A Letter to My Love</h2>
       <div class="story-card">
-        <button class="story-open-btn" id="story-open-btn">📖 Read My Letter</button>
+        <button class="story-open-btn" id="story-open-btn">Click me!</button>
         <div class="story-letter hidden" id="story-letter">
           <h3 id="full-letter-title"></h3>
           <div id="full-letter-body" class="letter-body"></div>
-          <button class="btn btn-pink" id="close-letter-btn">Close &amp; Open Again</button>
+          <button class="btn btn-dark" id="close-letter-btn">Close &amp; Open Again</button>
         </div>
       </div>
     </section>
 
-    <footer class="site-footer">
-      <p id="footer-signature"></p>
-    </footer>
+    </div>
+
   </div>
 
   <!-- Loved Modal -->
@@ -114,6 +145,7 @@
       <button class="modal-close" id="modal-close">✕</button>
       <h2 id="modal-title"></h2>
       <p id="modal-message"></p>
+      <button class="btn btn-dark modal-continue-btn" id="modal-continue-btn">I've read it — continue 💕</button>
     </div>
   </div>
 

@@ -1,0 +1,14 @@
+Add your photos here and name them:
+
+  photo1.jpg  → top row, 1st photo
+  photo2.jpg  → top row, 2nd photo
+  photo3.jpg  → top row, 3rd photo
+  photo4.jpg  → top row, 4th photo
+  photo5.jpg  → gallery
+  photo6.jpg  → gallery
+  photo7.jpg  → gallery
+  photo8.jpg  → gallery
+
+.png files also work — just update the names in js/config.js to match.
+
+After adding photos, push to GitHub so your boyfriend can see them on his phone!
